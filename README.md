@@ -2,6 +2,7 @@ Fxp Doctrine Extra
 ==================
 
 [![Latest Version](https://img.shields.io/packagist/v/fxp/doctrine-extra.svg)](https://packagist.org/packages/fxp/doctrine-extra)
+[![Build Status](https://img.shields.io/travis/fxpio/fxp-doctrine-extra/master.svg)](https://travis-ci.org/fxpio/fxp-doctrine-extra)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/fxpio/fxp-doctrine-extra.svg)](https://scrutinizer-ci.com/g/fxpio/fxp-doctrine-extra?branch=master)
 [![SensioLabsInsight](https://img.shields.io/sensiolabs/i/596cffff-898c-467c-9b3b-9e446bbaff0f.svg)](https://insight.sensiolabs.com/projects/596cffff-898c-467c-9b3b-9e446bbaff0f)
 
