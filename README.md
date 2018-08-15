@@ -2,6 +2,8 @@ Fxp Doctrine Extra
 ==================
 
 [![Latest Version](https://img.shields.io/packagist/v/fxp/doctrine-extra.svg)](https://packagist.org/packages/fxp/doctrine-extra)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/fxpio/fxp-doctrine-extra.svg)](https://scrutinizer-ci.com/g/fxpio/fxp-doctrine-extra?branch=master)
+
 Features include:
 
 - Class utils to retrieve the real class name of Doctrine models
