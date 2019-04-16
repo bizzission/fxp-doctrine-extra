@@ -5,7 +5,7 @@ Fxp Doctrine Extra
 [![Build Status](https://img.shields.io/travis/fxpio/fxp-doctrine-extra/master.svg)](https://travis-ci.org/fxpio/fxp-doctrine-extra)
 [![Coverage Status](https://img.shields.io/coveralls/fxpio/fxp-doctrine-extra/master.svg)](https://coveralls.io/r/fxpio/fxp-doctrine-extra?branch=master)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/fxpio/fxp-doctrine-extra.svg)](https://scrutinizer-ci.com/g/fxpio/fxp-doctrine-extra?branch=master)
-[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/596cffff-898c-467c-9b3b-9e446bbaff0f.svg)](https://insight.sensiolabs.com/projects/596cffff-898c-467c-9b3b-9e446bbaff0f)
+[![SymfonyInsight](https://img.shields.io/symfony/i/grade/4353e3bb-60eb-400a-b93c-ef54d595d808.svg)](https://insight.sensiolabs.com/projects/4353e3bb-60eb-400a-b93c-ef54d595d808)
 
 Features include:
 
