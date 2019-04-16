@@ -45,6 +45,6 @@ class ClassUtils
      */
     public static function getClass($object)
     {
-        return self::getRealClass(get_class($object));
+        return self::getRealClass(\get_class($object));
     }
 }
