@@ -38,7 +38,7 @@ class ManagerUtils
         if (null === $manager) {
             foreach ($or->getManagers() as $objectManager) {
                 if ($objectManager->getMetadataFactory()->hasMetadataFor($class)
-                        && static::isValidManager($objectManager, $class)) {
+                        && self::isValidManager($objectManager, $class)) {
                     $manager = $objectManager;
                     break;
                 }
