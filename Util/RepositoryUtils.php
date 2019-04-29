@@ -35,12 +35,7 @@ class RepositoryUtils
      */
     public static function getRepository(ManagerRegistry $doctrine, $class, $repositoryClass = null)
     {
-        $om = $doctrine->getManagerForClass($class);
-
-        if (null === $om) {
-            throw ObjectManagerNotFoundException::create($class);
-        }
-
+        $om = ManagerUtils::getRequiredManager($doctrine, $class);
         $repository = $om->getRepository($class);
 
         if (null !== $repositoryClass && !$repository instanceof $repositoryClass) {

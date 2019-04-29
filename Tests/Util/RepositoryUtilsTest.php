@@ -51,9 +51,6 @@ class RepositoryUtilsTest extends TestCase
      */
     public function testGetRepositoryWithNoManager()
     {
-        /* @var ObjectManager|MockObject $om */
-        $om = $this->getMockBuilder(ObjectManager::class)->getMock();
-
         /* @var ManagerRegistry|MockObject $doctrine */
         $doctrine = $this->getMockBuilder(ManagerRegistry::class)->getMock();
 
@@ -61,6 +58,10 @@ class RepositoryUtilsTest extends TestCase
             ->method('getManagerForClass')
             ->with(\stdClass::class)
             ->willReturn(null);
+
+        $doctrine->expects($this->once())
+            ->method('getManagers')
+            ->willReturn([]);
 
         RepositoryUtils::getRepository($doctrine, \stdClass::class, MockRepository::class);
     }
