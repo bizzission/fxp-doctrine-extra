@@ -29,7 +29,7 @@ class ManagerUtils
      * @param ManagerRegistry $or    The doctrine registry
      * @param string          $class The class name or doctrine shortcut class name
      *
-     * @return ObjectManager|null
+     * @return null|ObjectManager
      */
     public static function getManager(ManagerRegistry $or, $class)
     {
@@ -40,6 +40,7 @@ class ManagerUtils
                 if ($objectManager->getMetadataFactory()->hasMetadataFor($class)
                         && self::isValidManager($objectManager, $class)) {
                     $manager = $objectManager;
+
                     break;
                 }
             }
@@ -54,9 +55,9 @@ class ManagerUtils
      * @param ManagerRegistry $or    The doctrine registry
      * @param string          $class The class name
      *
-     * @return ObjectManager
-     *
      * @throws ObjectManagerNotFoundException When the class is not registered in doctrine
+     *
+     * @return ObjectManager
      */
     public static function getRequiredManager(ManagerRegistry $or, $class)
     {

@@ -18,8 +18,10 @@ namespace Fxp\Component\DoctrineExtra\Tests\Util
      * Class related functionality for objects that might or not be proxy objects at the moment.
      *
      * @author François Pluchino <francois.pluchino@gmail.com>
+     *
+     * @internal
      */
-    class ClassUtilsTest extends TestCase
+    final class ClassUtilsTest extends TestCase
     {
         public static function dataGetClass()
         {
@@ -38,9 +40,9 @@ namespace Fxp\Component\DoctrineExtra\Tests\Util
          * @param string $className
          * @param string $expectedClassName
          */
-        public function testGetRealClass($className, $expectedClassName)
+        public function testGetRealClass($className, $expectedClassName): void
         {
-            self::assertEquals($expectedClassName, ClassUtils::getRealClass($className));
+            $this->assertEquals($expectedClassName, ClassUtils::getRealClass($className));
         }
 
         /**
@@ -49,10 +51,10 @@ namespace Fxp\Component\DoctrineExtra\Tests\Util
          * @param string $className
          * @param string $expectedClassName
          */
-        public function testGetClass($className, $expectedClassName)
+        public function testGetClass($className, $expectedClassName): void
         {
             $object = new $className();
-            self::assertEquals($expectedClassName, ClassUtils::getClass($object));
+            $this->assertEquals($expectedClassName, ClassUtils::getClass($object));
         }
     }
 

@@ -16,10 +16,12 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class UnexpectedRepositoryExceptionTest extends TestCase
+final class UnexpectedRepositoryExceptionTest extends TestCase
 {
-    public function testException()
+    public function testException(): void
     {
         $exception = UnexpectedRepositoryException::create(\stdClass::class, 'RepoInterface');
 

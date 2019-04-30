@@ -20,73 +20,79 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class RepositoryUtilsTest extends TestCase
+final class RepositoryUtilsTest extends TestCase
 {
-    public function testGetRepository()
+    public function testGetRepository(): void
     {
-        /* @var ObjectManager|MockObject $om */
+        /** @var MockObject|ObjectManager $om */
         $om = $this->getMockBuilder(ObjectManager::class)->getMock();
 
         $om->expects($this->once())
             ->method('getRepository')
             ->with(\stdClass::class)
-            ->willReturn(new MockRepository());
+            ->willReturn(new MockRepository())
+        ;
 
-        /* @var ManagerRegistry|MockObject $doctrine */
+        /** @var ManagerRegistry|MockObject $doctrine */
         $doctrine = $this->getMockBuilder(ManagerRegistry::class)->getMock();
 
         $doctrine->expects($this->once())
             ->method('getManagerForClass')
             ->with(\stdClass::class)
-            ->willReturn($om);
+            ->willReturn($om)
+        ;
 
         $repo = RepositoryUtils::getRepository($doctrine, \stdClass::class, MockRepository::class);
         $this->assertInstanceOf(MockRepository::class, $repo);
     }
 
-    /**
-     * @expectedException \Fxp\Component\DoctrineExtra\Exception\ObjectManagerNotFoundException
-     * @expectedExceptionMessage The doctrine manager for the "stdClass" class is not found
-     */
-    public function testGetRepositoryWithNoManager()
+    public function testGetRepositoryWithNoManager(): void
     {
-        /* @var ManagerRegistry|MockObject $doctrine */
+        $this->expectException(\Fxp\Component\DoctrineExtra\Exception\ObjectManagerNotFoundException::class);
+        $this->expectExceptionMessage('The doctrine manager for the "stdClass" class is not found');
+
+        /** @var ManagerRegistry|MockObject $doctrine */
         $doctrine = $this->getMockBuilder(ManagerRegistry::class)->getMock();
 
         $doctrine->expects($this->once())
             ->method('getManagerForClass')
             ->with(\stdClass::class)
-            ->willReturn(null);
+            ->willReturn(null)
+        ;
 
         $doctrine->expects($this->once())
             ->method('getManagers')
-            ->willReturn([]);
+            ->willReturn([])
+        ;
 
         RepositoryUtils::getRepository($doctrine, \stdClass::class, MockRepository::class);
     }
 
-    /**
-     * @expectedException \Fxp\Component\DoctrineExtra\Exception\UnexpectedRepositoryException
-     * @expectedExceptionMessage The doctrine repository of the "stdClass" class is not an instance of the "Fxp\Component\DoctrineExtra\Tests\Fixtures\Entity\Repository\MockRepository"
-     */
-    public function testGetRepositoryWithInvalidRepositoryClass()
+    public function testGetRepositoryWithInvalidRepositoryClass(): void
     {
-        /* @var ObjectManager|MockObject $om */
+        $this->expectException(\Fxp\Component\DoctrineExtra\Exception\UnexpectedRepositoryException::class);
+        $this->expectExceptionMessage('The doctrine repository of the "stdClass" class is not an instance of the "Fxp\\Component\\DoctrineExtra\\Tests\\Fixtures\\Entity\\Repository\\MockRepository"');
+
+        /** @var MockObject|ObjectManager $om */
         $om = $this->getMockBuilder(ObjectManager::class)->getMock();
 
         $om->expects($this->once())
             ->method('getRepository')
             ->with(\stdClass::class)
-            ->willReturn(new \stdClass());
+            ->willReturn(new \stdClass())
+        ;
 
-        /* @var ManagerRegistry|MockObject $doctrine */
+        /** @var ManagerRegistry|MockObject $doctrine */
         $doctrine = $this->getMockBuilder(ManagerRegistry::class)->getMock();
 
         $doctrine->expects($this->once())
             ->method('getManagerForClass')
             ->with(\stdClass::class)
-            ->willReturn($om);
+            ->willReturn($om)
+        ;
 
         RepositoryUtils::getRepository($doctrine, \stdClass::class, MockRepository::class);
     }

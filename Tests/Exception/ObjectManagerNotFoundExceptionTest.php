@@ -16,10 +16,12 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class ObjectManagerNotFoundExceptionTest extends TestCase
+final class ObjectManagerNotFoundExceptionTest extends TestCase
 {
-    public function testException()
+    public function testException(): void
     {
         $exception = ObjectManagerNotFoundException::create(\stdClass::class);
 

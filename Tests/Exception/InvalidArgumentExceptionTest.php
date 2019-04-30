@@ -16,10 +16,12 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class InvalidArgumentExceptionTest extends TestCase
+final class InvalidArgumentExceptionTest extends TestCase
 {
-    public function testException()
+    public function testException(): void
     {
         $exception = new InvalidArgumentException('FOO');
 

@@ -26,12 +26,12 @@ class RepositoryUtils
     /**
      * @param ManagerRegistry $doctrine        The doctrine registry
      * @param string          $class           The object class managed by doctrine
-     * @param string|null     $repositoryClass The required repository class
-     *
-     * @return ObjectRepository
+     * @param null|string     $repositoryClass The required repository class
      *
      * @throws ObjectManagerNotFoundException
      * @throws UnexpectedRepositoryException
+     *
+     * @return ObjectRepository
      */
     public static function getRepository(ManagerRegistry $doctrine, $class, $repositoryClass = null)
     {
