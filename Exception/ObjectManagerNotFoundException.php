@@ -25,7 +25,7 @@ class ObjectManagerNotFoundException extends InvalidArgumentException
      *
      * @return ObjectManagerNotFoundException
      */
-    public static function create($class)
+    public static function create(string $class): ObjectManagerNotFoundException
     {
         $msg = sprintf('The doctrine manager for the "%s" class is not found', $class);
 

@@ -26,7 +26,7 @@ class UnexpectedRepositoryException extends InvalidArgumentException
      *
      * @return UnexpectedRepositoryException
      */
-    public static function create($class, $repositoryClass)
+    public static function create(string $class, string $repositoryClass): UnexpectedRepositoryException
     {
         $msg = sprintf('The doctrine repository of the "%s" class is not an instance of the "%s"', $class, $repositoryClass);
 

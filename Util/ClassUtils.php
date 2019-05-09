@@ -27,7 +27,7 @@ class ClassUtils
      *
      * @return string
      */
-    public static function getRealClass($class)
+    public static function getRealClass(string $class): string
     {
         if (false === $pos = strrpos($class, '\\'.Proxy::MARKER.'\\')) {
             return $class;
@@ -43,7 +43,7 @@ class ClassUtils
      *
      * @return string
      */
-    public static function getClass($object)
+    public static function getClass($object): string
     {
         return self::getRealClass(\get_class($object));
     }

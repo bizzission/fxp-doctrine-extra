@@ -13,7 +13,7 @@ namespace Fxp\Component\DoctrineExtra\Tests\Util;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
-use Fxp\Component\DoctrineExtra\Tests\Fixtures\Entity\Repository\MockRepository;
+use Doctrine\Common\Persistence\ObjectRepository;
 use Fxp\Component\DoctrineExtra\Util\RepositoryUtils;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -27,13 +27,15 @@ final class RepositoryUtilsTest extends TestCase
 {
     public function testGetRepository(): void
     {
+        $mockRepo = $this->getMockBuilder(ObjectRepository::class)->getMock();
+
         /** @var MockObject|ObjectManager $om */
         $om = $this->getMockBuilder(ObjectManager::class)->getMock();
 
         $om->expects($this->once())
             ->method('getRepository')
             ->with(\stdClass::class)
-            ->willReturn(new MockRepository())
+            ->willReturn($mockRepo)
         ;
 
         /** @var ManagerRegistry|MockObject $doctrine */
@@ -45,8 +47,8 @@ final class RepositoryUtilsTest extends TestCase
             ->willReturn($om)
         ;
 
-        $repo = RepositoryUtils::getRepository($doctrine, \stdClass::class, MockRepository::class);
-        $this->assertInstanceOf(MockRepository::class, $repo);
+        $repo = RepositoryUtils::getRepository($doctrine, \stdClass::class, \get_class($mockRepo));
+        $this->assertSame($mockRepo, $repo);
     }
 
     public function testGetRepositoryWithNoManager(): void
@@ -68,13 +70,16 @@ final class RepositoryUtilsTest extends TestCase
             ->willReturn([])
         ;
 
-        RepositoryUtils::getRepository($doctrine, \stdClass::class, MockRepository::class);
+        RepositoryUtils::getRepository($doctrine, \stdClass::class);
     }
 
     public function testGetRepositoryWithInvalidRepositoryClass(): void
     {
+        $mockRepo = $this->getMockBuilder(ObjectRepository::class)->getMock();
+        $expectedRepoClass = \get_class($mockRepo);
+
         $this->expectException(\Fxp\Component\DoctrineExtra\Exception\UnexpectedRepositoryException::class);
-        $this->expectExceptionMessage('The doctrine repository of the "stdClass" class is not an instance of the "Fxp\\Component\\DoctrineExtra\\Tests\\Fixtures\\Entity\\Repository\\MockRepository"');
+        $this->expectExceptionMessageRegExp('/The doctrine repository of the "stdClass" class is not an instance of the "(\w+)"/');
 
         /** @var MockObject|ObjectManager $om */
         $om = $this->getMockBuilder(ObjectManager::class)->getMock();
@@ -94,6 +99,6 @@ final class RepositoryUtilsTest extends TestCase
             ->willReturn($om)
         ;
 
-        RepositoryUtils::getRepository($doctrine, \stdClass::class, MockRepository::class);
+        RepositoryUtils::getRepository($doctrine, \stdClass::class, $expectedRepoClass);
     }
 }

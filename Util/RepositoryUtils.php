@@ -33,7 +33,7 @@ class RepositoryUtils
      *
      * @return ObjectRepository
      */
-    public static function getRepository(ManagerRegistry $doctrine, $class, $repositoryClass = null)
+    public static function getRepository(ManagerRegistry $doctrine, string $class, ?string $repositoryClass = null): ObjectRepository
     {
         $om = ManagerUtils::getRequiredManager($doctrine, $class);
         $repository = $om->getRepository($class);

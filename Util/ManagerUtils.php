@@ -31,7 +31,7 @@ class ManagerUtils
      *
      * @return null|ObjectManager
      */
-    public static function getManager(ManagerRegistry $or, $class)
+    public static function getManager(ManagerRegistry $or, string $class): ?ObjectManager
     {
         $manager = $or->getManagerForClass($class);
 
@@ -59,7 +59,7 @@ class ManagerUtils
      *
      * @return ObjectManager
      */
-    public static function getRequiredManager(ManagerRegistry $or, $class)
+    public static function getRequiredManager(ManagerRegistry $or, string $class): ObjectManager
     {
         $manager = static::getManager($or, $class);
 
@@ -78,7 +78,7 @@ class ManagerUtils
      *
      * @return bool
      */
-    private static function isValidManager(ObjectManager $manager, $class)
+    private static function isValidManager(ObjectManager $manager, string $class): bool
     {
         $meta = $manager->getClassMetadata($class);
 
