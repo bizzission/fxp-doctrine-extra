@@ -106,23 +106,10 @@ final class ManagerUtilsTest extends TestCase
         $this->assertSame($manager, ManagerUtils::getManager($registry, 'ValidClass'));
     }
 
-    public function testGetManagerWithValidClassButMappedSupperclass(): void
+    public function testGetManagerWithValidClassButMappedSuperclass(): void
     {
-        /** @var ClassMetadataFactory|MockObject $metaFactory */
-        $metaFactory = $this->getMockBuilder(ClassMetadataFactory::class)->getMock();
-
-        $metaFactory->expects($this->once())
-            ->method('hasMetadataFor')
-            ->with('ValidClass')
-            ->willReturn(true)
-        ;
-
         /** @var MockObject|ObjectManager $manager */
         $manager = $this->getMockBuilder(ObjectManager::class)->getMock();
-        $manager->expects($this->atLeastOnce())
-            ->method('getMetadataFactory')
-            ->willReturn($metaFactory)
-        ;
 
         /** @var ManagerRegistry|MockObject $registry */
         $registry = $this->getMockBuilder(ManagerRegistry::class)->getMock();
