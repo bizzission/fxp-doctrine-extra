@@ -15,10 +15,9 @@
     "prefer-stable": false,
     "require": {
         "php": "^7.1.0",
-        "doctrine/persistence": "^2.0"
+        "doctrine/persistence": "^1.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9",
         "doctrine/orm": "^2.7"
     },
     "autoload": {
