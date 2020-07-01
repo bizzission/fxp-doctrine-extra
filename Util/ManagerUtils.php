@@ -11,9 +11,9 @@
 
 namespace Fxp\Component\DoctrineExtra\Util;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
-use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping\ClassMetadata as OrmClassMetadata;
+use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ObjectManager;
 use Fxp\Component\DoctrineExtra\Exception\ObjectManagerNotFoundException;
 
 /**

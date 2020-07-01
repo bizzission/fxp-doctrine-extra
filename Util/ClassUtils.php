@@ -11,7 +11,7 @@
 
 namespace Fxp\Component\DoctrineExtra\Util;
 
-use Doctrine\Common\Persistence\Proxy;
+use Doctrine\Persistence\Proxy;
 
 /**
  * Class related functionality for objects that might or not be proxy objects at the moment.

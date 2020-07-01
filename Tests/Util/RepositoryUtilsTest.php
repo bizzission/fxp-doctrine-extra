@@ -11,9 +11,9 @@
 
 namespace Fxp\Component\DoctrineExtra\Tests\Util;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
-use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\Common\Persistence\ObjectRepository;
+use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectRepository;
 use Fxp\Component\DoctrineExtra\Util\RepositoryUtils;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -79,7 +79,7 @@ final class RepositoryUtilsTest extends TestCase
         $expectedRepoClass = \get_class($mockRepo);
 
         $this->expectException(\Fxp\Component\DoctrineExtra\Exception\UnexpectedRepositoryException::class);
-        $this->expectExceptionMessageRegExp('/The doctrine repository of the "stdClass" class is not an instance of the "(\w+)"/');
+        $this->expectExceptionMessageMatches('/The doctrine repository of the "stdClass" class is not an instance of the "(\w+)"/');
 
         /** @var MockObject|ObjectManager $om */
         $om = $this->getMockBuilder(ObjectManager::class)->getMock();
