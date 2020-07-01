@@ -11,8 +11,8 @@
 
 namespace Fxp\Component\DoctrineExtra\Util;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
-use Doctrine\Common\Persistence\ObjectRepository;
+use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ObjectRepository;
 use Fxp\Component\DoctrineExtra\Exception\ObjectManagerNotFoundException;
 use Fxp\Component\DoctrineExtra\Exception\UnexpectedRepositoryException;
 

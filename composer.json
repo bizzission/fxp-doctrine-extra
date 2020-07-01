@@ -15,10 +15,11 @@
     "prefer-stable": false,
     "require": {
         "php": "^7.1.0",
-        "doctrine/persistence": "^1.0.0"
+        "doctrine/persistence": "^2.0"
     },
     "require-dev": {
-        "doctrine/orm": "^2.6.0"
+        "phpunit/phpunit": "^9",
+        "doctrine/orm": "^2.7"
     },
     "autoload": {
         "psr-4": { "Fxp\\Component\\DoctrineExtra\\": "" },
